@@ -1,14 +1,16 @@
 # slush-bootstrap [![Build Status](https://secure.travis-ci.org/arvindr21/slush-bootstrap.png?branch=master)](https://travis-ci.org/arvindr21/slush-bootstrap) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-bootstrap.png)](http://badges.enytc.com/for/npm/slush-bootstrap) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arvindr21/slush-bootstrap/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+[![NPM](https://nodei.co/npm/slush-bootstrap.png?downloads=true&stars=true)](https://nodei.co/npm/slush-bootstrap/)
+
 > A Slush generator for Bootstrap SASS/LESS/CSS projects
 
 ### Development in Progress
 
 ## Todos
 
-- [] Boostrap CSS
-- [] Boostrap SASS
-- [] Boostrap LESS 
+- [ ] Boostrap CSS
+- [ ] Boostrap SASS
+- [ ] Boostrap LESS 
 
 ## Getting Started
 
