@@ -31,11 +31,25 @@ $ npm install -g gulp slush
 
 ## Features
 
-* All bootstrap templates integrated with project. All you need to do is pull from ```dev/templates``` folder and use it.
-* Build process runs a cssmin, jsmin, imagemin and copies the required files
+* All bootstrap templates are integrated with the scaffolded project. All you need to do is pull the required template from ```dev/templates``` folder and use it.
+* Build process runs a cssmin, jsmin, imagemin and copies the required files to ```/build``` folder
 * The build task uses [useref](https://www.npmjs.org/package/gulp-useref) which makes building projects easy.
 
-## Run the app 
+## Usage
+
+Create a new folder for your project:
+
+```bash
+$ mkdir my-slush-bootstrap
+```
+
+Run the generator from within the new folder:
+
+```bash
+$ cd my-slush-bootstrap && slush bootstrap
+```
+
+### Run the app 
 
 To run the app, execute
 
@@ -59,20 +73,6 @@ $ gulp build-template
 To run the built app, execute
 ```bash
 $ gulp prod
-```
-
-### Usage
-
-Create a new folder for your project:
-
-```bash
-$ mkdir my-slush-bootstrap
-```
-
-Run the generator from within the new folder:
-
-```bash
-$ cd my-slush-bootstrap && slush bootstrap
 ```
 
 ## Getting To Know Slush
