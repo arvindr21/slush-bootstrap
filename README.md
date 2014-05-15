@@ -2,15 +2,16 @@
 
 [![NPM](https://nodei.co/npm/slush-bootstrap.png?downloads=true&stars=true)](https://nodei.co/npm/slush-bootstrap/)
 
-> A Slush generator for Bootstrap SASS/LESS/CSS projects
+> A Slush generator for Bootstrap SASS/LESS/CSS/Stylus projects
 
 ### Development in Progress
 
 ## Todos
 
-- [ ] Boostrap CSS
+- [x] Boostrap CSS
 - [ ] Boostrap SASS
 - [ ] Boostrap LESS 
+- [ ] Boostrap Stylus 
 
 ## Getting Started
 

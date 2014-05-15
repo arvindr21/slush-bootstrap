@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap</title>
+        <meta name="description" content="This is an awesome Bootstap boiler plate, scaffolded by slush bootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css /styles/main.css -->
+        <link rel="stylesheet" href="/assets/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/styles/bootstrap-custom-theme.css">  
+        <!-- endbuild -->
+        
+        <!-- build:css /styles/tooltip-viewport/tooltip-viewport.css -->
+        <link rel="stylesheet" href="/templates/tooltip-viewport/tooltip-viewport.css">
+        <!-- endbuild -->
+
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.1/json3.min.js"></script>
+        <![endif]-->
+
+        <!-- build:js /scripts/modernizr.js -->
+        <script src="/assets/lib/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+
+      <button class="btn pull-right tooltip-bottom" title="This should be shifted to the left">Shift Left</button>
+      <button class="btn tooltip-bottom" title="This should be shifted to the right">Shift Right</button>
+      <button class="btn tooltip-right" title="This should be shifted down">Shift Down</button>
+
+      <div class="placeholder">There is a button down there ↓</div>
+
+      <button class="btn tooltip-right" title="This should be shifted up">Shift Up</button>
+
+      <div class="container-viewport">
+        <button class="btn tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+        <button class="btn tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
+
+        <button class="btn pull-right tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+
+        <button class="btn tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+      </div>
+
+        <!-- build:js /scripts/vendor.js -->
+        <script src="/assets/lib/jquery/dist/jquery.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js /scripts/plugins.js -->
+        <script src="/assets/lib/bootstrap/js/affix.js"></script>
+        <script src="/assets/lib/bootstrap/js/alert.js"></script>
+        <script src="/assets/lib/bootstrap/js/dropdown.js"></script>
+        <script src="/assets/lib/bootstrap/js/tooltip.js"></script>
+        <script src="/assets/lib/bootstrap/js/modal.js"></script>
+        <script src="/assets/lib/bootstrap/js/transition.js"></script>
+        <script src="/assets/lib/bootstrap/js/button.js"></script>
+        <script src="/assets/lib/bootstrap/js/popover.js"></script>
+        <script src="/assets/lib/bootstrap/js/carousel.js"></script>
+        <script src="/assets/lib/bootstrap/js/scrollspy.js"></script>
+        <script src="/assets/lib/bootstrap/js/collapse.js"></script>
+        <script src="/assets/lib/bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js /scripts/tooltip-viewport.js -->
+        <script src="/templates/tooltip-viewport/tooltip-viewport.js"></script>
+        <!-- endbuild -->
+        <!-- build:js /scripts/main.js -->
+        <script src="/assets/scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

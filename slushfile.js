@@ -8,7 +8,8 @@
 
 'use strict';
 
-var gulp = require('gulp'),
+var path = require('path'),
+    gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     template = require('gulp-template'),
@@ -16,40 +17,69 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     inquirer = require('inquirer');
 
+
 gulp.task('default', function (done) {
     var prompts = [{
         type: 'input',
         name: 'appName',
-        message: 'What is the name of your generator?',
-        default: gulp.args.join(' ')
+        message: 'What is the name of your application?',
+        default: path.basename(process.cwd())
     }, {
         type: 'input',
         name: 'appDescription',
-        message: 'What is the description for your generator?'
+        message: 'How would you describe your application?',
+        default: 'An awesome Bootstrap app'
     }, {
-        type: 'confirm',
-        name: 'moveon',
-        message: 'Continue?'
-    }];
+        type: 'list',
+        name: 'stylesheetEngine',
+        message: 'Select a stylesheet engine?',
+        choices: [{
+            name: "CSS",
+            value: "css"
+          }, {
+            name: "SASS",
+            value: "sass"
+          }, {
+            name: "LESS",
+            value: "less"
+          },
+            {
+            name: "Stylus",
+            value: "stylus"
+          }
+
+        ],
+        default: 'css'
+      }];
+
     //Ask
     inquirer.prompt(prompts,
         function (answers) {
-            if (!answers.moveon) {
+            if (!answers) {
                 return done();
             }
             answers.appNameSlug = _.slugify(answers.appName);
-            gulp.src(__dirname + '/templates/**')
-                .pipe(template(answers))
-                .pipe(rename(function (file) {
-                    if (file.basename[0] === '_') {
-                        file.basename = '.' + file.basename.slice(1);
-                    }
-                }))
-                .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
-                .pipe(install())
-                .on('end', function () {
-                    done();
-                });
+
+            if(answers.stylesheetEngine == 'css')
+            {
+                gulp.src([__dirname + '/templates/fonts/**' ])
+                    .pipe(conflict('./dev/assets/fonts/'))
+                    .pipe(gulp.dest('./dev/assets/fonts/'));
+
+
+                gulp.src([__dirname + '/templates/css/**'])
+                    .pipe(template(answers))
+                    .pipe(rename(function (file) {
+                        if (file.basename[0] === '_') {
+                            file.basename = '.' + file.basename.slice(1);
+                        }
+                    }))
+                    .pipe(conflict('./'))
+                    .pipe(gulp.dest('./'))
+                    .pipe(install())
+                    .on('end', function () {
+                        done();
+                    });    
+            }
         });
 });
