@@ -23,10 +23,42 @@ Install `slush-bootstrap` globally:
 $ npm install -g slush-bootstrap
 ```
 
-Remember to install `slush` globally as well, if you haven't already:
+Remember to install `gulp` & `slush` globally as well, if you haven't already:
 
 ```bash
-$ npm install -g slush
+$ npm install -g gulp slush
+```
+
+## Features
+
+* All bootstrap templates integrated with project. All you need to do is pull from ```dev/templates``` folder and use it.
+* Build process runs a cssmin, jsmin, imagemin and copies the required files
+* The build task uses [useref](https://www.npmjs.org/package/gulp-useref) which makes building projects easy.
+
+## Run the app 
+
+To run the app, execute
+
+```bash
+$ gulp 
+```
+and navigate to ```http://localhost:1881``` to see the starter template. You can checkout ```dev/templates``` folder for integrated Bootstrap templates.
+
+To build the project (except templates folder) to `/build` folder, run
+
+```bash
+$ gulp build
+```
+
+To build the complete project (including templates folder) to `/build` folder, run
+
+```bash
+$ gulp build-template
+```
+
+To run the built app, execute
+```bash
+$ gulp prod
 ```
 
 ### Usage
