@@ -1,0 +1,10 @@
+{
+	"name": "<%= appNameSlug %>",
+	"version": "0.1.0",
+	"description": "<%= appDescription %>",
+	"dependencies": {
+	    "bootstrap-less": "~3.1.1",
+	    "modernizr": "latest",
+	    "jquery": "1.11.0"
+	  }
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap</title>
+        <meta name="description" content="This is an awesome Bootstap boiler plate, scaffolded by slush bootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css /styles/main.min.css -->
+        <link rel="stylesheet" href="/assets/styles/main.css">  
+        <!-- endbuild -->
+        
+        <!-- build:css /styles/non-responsive/non-responsive.css -->
+        <link rel="stylesheet" href="/templates/non-responsive/non-responsive.css">
+        <!-- endbuild -->
+
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.1/json3.min.js"></script>
+        <![endif]-->
+
+        <!-- build:js /scripts/modernizr.min.js -->
+        <script src="/assets/lib/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+       
+           <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><%= appName %></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+
+        <div class="container">
+
+          <div class="page-header">
+            <h1>Non-responsive Bootstrap</h1>
+            <p class="lead">Disable the responsiveness of Bootstrap by fixing the width of the container and using the first grid system tier. <a href="http://getbootstrap.com/getting-started/#disable-responsive">Read the documentation</a> for more information.</p>
+          </div>
+
+          <h3>What changes</h3>
+          <p>Note the lack of the <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>, which disables the zooming aspect of sites in mobile devices. In addition, we reset our container's width and are basically good to go.</p>
+
+          <h3>Regarding navbars</h3>
+          <p>As a heads up, the navbar component is rather tricky here in that the styles for displaying it are rather specific and detailed. Overrides to ensure desktop styles display are not as performant or sleek as one would like. Just be aware there may be potential gotchas as you build on top of this example when using the navbar.</p>
+
+          <h3>Browsers, scrolling, and fixed elements</h3>
+          <p>Non-responsive layouts highlight a key drawback to fixed elements. <strong class="text-danger">Any fixed component, such as a fixed navbar, will not be scrollable when the viewport becomes narrower than the page content.</strong> In other words, given the non-responsive container width of 970px and a viewport of 800px, you'll potentially hide 170px of content.</p>
+          <p>There is no way around this as it's default browser behavior. The only solution is a responsive layout or using a non-fixed element.</p>
+
+          <h3>Non-responsive grid system</h3>
+          <div class="row">
+            <div class="col-xs-4">One third</div>
+            <div class="col-xs-4">One third</div>
+            <div class="col-xs-4">One third</div>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- build:js /scripts/vendor.min.js -->
+        <script src="/assets/lib/jquery/dist/jquery.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js /scripts/bootstrap.min.js -->
+        <script src="/assets/lib/bootstrap-less/js/affix.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/alert.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/dropdown.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/tooltip.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/modal.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/transition.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/button.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/popover.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/carousel.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/scrollspy.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/collapse.js"></script>
+        <script src="/assets/lib/bootstrap-less/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js /scripts/main.min.js -->
+        <script src="/assets/scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
