@@ -1,7 +1,7 @@
 {
   "name": "slush-bootstrap",
   "description": "A Slush generator for Bootstrap SASS/LESS/CSS/Stylus projects",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "homepage": "https://github.com/arvindr21/slush-bootstrap",
   "author": {
     "name": "Arvind",

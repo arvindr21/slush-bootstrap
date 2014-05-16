@@ -4,16 +4,6 @@
 
 > A Slush generator for Bootstrap SASS/LESS/CSS/Stylus projects
 
-### Development in Progress
-
-## Todos
-
-- [x] Boostrap CSS
-- [x] Boostrap SASS
-- [x] Boostrap LESS 
-- [ ] Boostrap Stylus 
-- [ ] Add gulp-local-screenshots support
-
 ## Getting Started
 
 ### Installation
@@ -29,6 +19,12 @@ Remember to install `gulp` & `slush` globally as well, if you haven't already:
 ```bash
 $ npm install -g gulp slush
 ```
+Then pick stylesheet engine among 
+
+* CSS
+* SASS
+* LESS
+* Stylus
 
 ## Features
 
@@ -75,6 +71,15 @@ To run the built app, execute
 ```bash
 $ gulp prod
 ```
+
+## Todos
+
+- [x] Boostrap CSS
+- [x] Boostrap SASS
+- [x] Boostrap LESS 
+- [x] Boostrap Stylus 
+- [ ] Add gulp-local-screenshots support
+
 
 ## Getting To Know Slush
 
