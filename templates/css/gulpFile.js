@@ -42,8 +42,7 @@ gulp.task('connect-dev', function() {
 gulp.task('connect-prod', function() {
   connect.server({
     root: config.build,
-    port: config.port,
-    livereload: true
+    port: config.port
   });
 });
 
@@ -107,6 +106,6 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('default', ['connect-dev', 'watch']);
-gulp.task('build-template', ['template-parser']);
+gulp.task('build-templates', ['template-parser']);
 gulp.task('build', ['imagemin','fonts','html-parser']);
 gulp.task('prod', ['connect-prod']);

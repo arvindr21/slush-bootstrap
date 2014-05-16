@@ -67,7 +67,7 @@ $ gulp build
 To build the complete project (including templates folder) to `/build` folder, run
 
 ```bash
-$ gulp build-template
+$ gulp build-templates
 ```
 
 To run the built app, execute
