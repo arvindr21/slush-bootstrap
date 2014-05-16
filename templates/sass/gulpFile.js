@@ -11,7 +11,9 @@ var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
 var imagemin = require('gulp-imagemin');
 var pngcrush = require('imagemin-pngcrush');
+var sass = require('gulp-ruby-sass');
 var prefix = require('gulp-autoprefixer');
+
 
 var config = {
     dev : 'dev',
@@ -52,14 +54,17 @@ gulp.task('connect-prod', function() {
 });
 
 gulp.task('reload', function () {
-  return gulp.src(['dev/**/*.html', '!dev/assets/**'])
+  return gulp.src([
+        config.dev+'/**/*.html', 
+        '!'+config.dev+'/assets/**'
+    ])
     .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
-   gulp.watch([
-        config.dev+'/assets/styles/*.css',
-       ], ['csslint', 'reload']);
+    gulp.watch([
+        config.dev+'/assets/styles/*.scss',
+       ], ['sass-dev', 'csslint', 'reload']);
     
     gulp.watch([
         'gulpFile.js',
@@ -83,11 +88,6 @@ gulp.task('html-parser', function () {
         .pipe(uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
-        .pipe(prefix('last 3 version', '> 1%', 
-            { 
-                cascade: true 
-            }
-        ))
         .pipe(minifyCss())
         .pipe(cssFilter.restore())
         .pipe(useref.restore())
@@ -96,7 +96,7 @@ gulp.task('html-parser', function () {
 });
 
 gulp.task('template-parser', function () {
-    console.log('Building template files.. This might take a few minutes..');
+    console.log('Building template files.. This might take some time..');
     var jsFilter = filter('**/*.js');
     var cssFilter = filter('**/*.css');
 
@@ -106,11 +106,6 @@ gulp.task('template-parser', function () {
         .pipe(uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
-        .pipe(prefix('last 3 version', '> 1%', 
-            { 
-                cascade: true 
-            }
-        ))
         .pipe(minifyCss())
         .pipe(cssFilter.restore())
         .pipe(useref.restore())
@@ -133,7 +128,43 @@ gulp.task('fonts', function () {
                 .pipe(gulp.dest(config.build+'/fonts'));
 });
 
-gulp.task('default', ['connect-dev', 'watch']);
-gulp.task('build-templates', ['imagemin','fonts', 'template-parser']);
-gulp.task('build', ['imagemin','fonts','html-parser']);
+gulp.task('sass-dev', function () {
+    return gulp.src(config.dev+'/assets/styles/**/*.scss')
+        .pipe(sass({
+            sourcemap: false,
+            trace : true,
+            style: 'expanded',
+            precision: 5,
+            debugInfo : false,
+            lineNumbers : true
+        }))
+        .pipe(prefix('last 3 version', '> 1%', 
+            { 
+                cascade: true 
+            }
+        ))
+        .pipe(gulp.dest(config.dev+'/assets/styles/'));
+});
+
+gulp.task('sass-prod', function () {
+    return gulp.src(config.dev+'/assets/styles/**/*.scss')
+        .pipe(sass({
+            sourcemap: false,
+            trace : false,
+            style: 'expanded',
+            precision: 5,
+            debugInfo : false,
+            lineNumbers : false
+        }))
+        .pipe(prefix('last 3 version', '> 1%', 
+            { 
+                cascade: false 
+            }
+        ))
+        .pipe(gulp.dest(config.dev+'/assets/styles/'));
+});
+
+gulp.task('default', ['sass-dev', 'connect-dev', 'watch']);
+gulp.task('build-templates', ['sass-prod','imagemin','fonts','template-parser']);
+gulp.task('build', ['sass-prod', 'imagemin','fonts','html-parser']);
 gulp.task('prod', ['connect-prod']);

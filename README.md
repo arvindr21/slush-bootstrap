@@ -9,9 +9,10 @@
 ## Todos
 
 - [x] Boostrap CSS
-- [ ] Boostrap SASS
+- [x] Boostrap SASS
 - [ ] Boostrap LESS 
 - [ ] Boostrap Stylus 
+- [ ] Add gulp-local-screenshots support
 
 ## Getting Started
 
