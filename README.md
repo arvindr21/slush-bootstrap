@@ -33,8 +33,8 @@ $ npm install -g gulp slush
 ## Features
 
 * All bootstrap templates are integrated with the scaffolded project. All you need to do is pull the required template from ```dev/templates``` folder and use it.
-* Build process runs a cssmin, jsmin, imagemin and copies the required files to ```/build``` folder
-* The build task uses [useref](https://www.npmjs.org/package/gulp-useref) which makes building projects easy.
+* Watch task with csslint, jslint and stylesheet compiling.
+* Build process runs a cssmin, jsmin, imagemin and copies the required files to ```/build``` folder. The build task uses [useref](https://www.npmjs.org/package/gulp-useref), if needed you can inject your own styles and scripts.
 
 ## Usage
 

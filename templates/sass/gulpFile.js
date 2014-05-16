@@ -96,7 +96,7 @@ gulp.task('html-parser', function () {
 });
 
 gulp.task('template-parser', function () {
-    console.log('Building template files.. This might take some time..');
+    console.log('Building template files.. This might take a few minutes..');
     var jsFilter = filter('**/*.js');
     var cssFilter = filter('**/*.css');
 
