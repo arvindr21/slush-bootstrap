@@ -103,5 +103,27 @@ gulp.task('default', function (done) {
                         done();
                     });    
             }
+
+            if(answers.stylesheetEngine == 'less')
+            {
+                gulp.src([__dirname + '/templates/fonts/**' ])
+                    .pipe(conflict('./dev/assets/fonts/'))
+                    .pipe(gulp.dest('./dev/assets/fonts/'));
+
+
+                gulp.src([__dirname + '/templates/less/**'])
+                    .pipe(template(answers))
+                    .pipe(rename(function (file) {
+                        if (file.basename[0] === '_') {
+                            file.basename = '.' + file.basename.slice(1);
+                        }
+                    }))
+                    .pipe(conflict('./'))
+                    .pipe(gulp.dest('./'))
+                    .pipe(install())
+                    .on('end', function () {
+                        done();
+                    });    
+            }
         });
 });

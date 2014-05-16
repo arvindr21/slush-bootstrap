@@ -10,7 +10,7 @@
 
 - [x] Boostrap CSS
 - [x] Boostrap SASS
-- [ ] Boostrap LESS 
+- [x] Boostrap LESS 
 - [ ] Boostrap Stylus 
 - [ ] Add gulp-local-screenshots support
 
