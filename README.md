@@ -78,6 +78,7 @@ $ gulp prod
 - [x] Boostrap SASS
 - [x] Boostrap LESS 
 - [x] Boostrap Stylus 
+- [ ] Add coffee script support
 - [ ] Add gulp-local-screenshots support
 
 
