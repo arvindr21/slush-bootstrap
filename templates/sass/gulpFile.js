@@ -16,9 +16,9 @@ var prefix = require('gulp-autoprefixer');
 
 
 var config = {
-    dev : 'dev',
-    build : 'build',
-    port : 1881
+  dev: 'dev',
+  build: 'build',
+  port: 1881
 };
 
 gulp.task('jshint', function() {
@@ -29,11 +29,9 @@ gulp.task('jshint', function() {
 
 gulp.task('csslint', function() {
   return gulp.src(['dev/assets/styles/*.css'])
-    .pipe(prefix('last 3 version', '> 1%', 
-        { 
-            cascade: true 
-        }
-    ))
+    .pipe(prefix('last 3 version', '> 1%', {
+      cascade: true
+    }))
     .pipe(csslint('.csslintrc'))
     .pipe(csslint.reporter());
 });
@@ -53,118 +51,121 @@ gulp.task('connect-prod', function() {
   });
 });
 
-gulp.task('reload', function () {
+gulp.task('reload', function() {
   return gulp.src([
-        config.dev+'/**/*.html', 
-        '!'+config.dev+'/assets/**'
+      config.dev + '/**/*.html',
+      '!' + config.dev + '/assets/**'
     ])
     .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
-    gulp.watch([
-        config.dev+'/assets/styles/*.scss',
-       ], ['sass-dev', 'csslint', 'reload']);
-    
-    gulp.watch([
-        'gulpFile.js',
-        config.dev+'/assets/scripts/**/*.js'
-    ], ['jshint', 'reload']);
+gulp.task('watch', function() {
+  gulp.watch([
+    config.dev + '/assets/styles/*.scss',
+  ], ['sass-dev', 'csslint', 'reload']);
 
-    gulp.watch([
-        config.dev+'/*.html',
-        config.dev+'/templates/**/*.html',
-        config.dev+'/images/**/*'
-    ], ['reload']);
+  gulp.watch([
+    'gulpFile.js',
+    config.dev + '/assets/scripts/**/*.js'
+  ], ['jshint', 'reload']);
+
+  gulp.watch([
+    config.dev + '/*.html',
+    config.dev + '/templates/**/*.html',
+    config.dev + '/images/**/*'
+  ], ['reload']);
 });
 
-gulp.task('html-parser', function () {
-    var jsFilter = filter('**/*.js');
-    var cssFilter = filter('**/*.css');
+gulp.task('html-parser', function() {
 
-    return gulp.src([config.dev+'/**/*.html','!'+config.dev+'/assets/lib/**','!'+config.dev+'/templates/**' ])
-        .pipe(useref.assets())
-        .pipe(jsFilter)
-        .pipe(uglify())
-        .pipe(jsFilter.restore())
-        .pipe(cssFilter)
-        .pipe(minifyCss())
-        .pipe(cssFilter.restore())
-        .pipe(useref.restore())
-        .pipe(useref())
-        .pipe(gulp.dest(config.build));
+  return gulp.src([config.dev + '/**/*.html', '!' + config.dev + '/assets/lib/**', '!' + config.dev + '/templates/**'])
+    .pipe(useref())
+    .pipe(gulp.dest(config.build));
 });
 
-gulp.task('template-parser', function () {
-    console.log('Building template files.. This might take a few minutes..');
-    var jsFilter = filter('**/*.js');
-    var cssFilter = filter('**/*.css');
+gulp.task('assets-parser', function() {
+  var jsFilter = filter('**/*.js');
+  var cssFilter = filter('**/*.css');
 
-    return gulp.src([config.dev+'/**/*.html','!'+config.dev+'/assets/lib/**' ])
-        .pipe(useref.assets())
-        .pipe(jsFilter)
-        .pipe(uglify())
-        .pipe(jsFilter.restore())
-        .pipe(cssFilter)
-        .pipe(minifyCss())
-        .pipe(cssFilter.restore())
-        .pipe(useref.restore())
-        .pipe(useref())
-        .pipe(gulp.dest(config.build));
+  return gulp.src([config.dev + '/**/*.html', '!' + config.dev + '/assets/lib/**', '!' + config.dev + '/templates/**'])
+    .pipe(useref.assets())
+    .pipe(jsFilter)
+    .pipe(uglify())
+    .pipe(jsFilter.restore())
+    .pipe(cssFilter)
+    .pipe(minifyCss())
+    .pipe(cssFilter.restore())
+    .pipe(gulp.dest(config.build));
 });
 
-gulp.task('imagemin', function () {
-    return gulp.src(config.dev+'/assets/images/**')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngcrush()]
-        }))
-        .pipe(gulp.dest(config.build+'/images'));
+gulp.task('template-parser', function() {
+  console.log('Building template files.. This might take a few minutes..');
+  var jsFilter = filter('**/*.js');
+  var cssFilter = filter('**/*.css');
+
+  return gulp.src([config.dev + '/**/*.html', '!' + config.dev + '/assets/lib/**'])
+    .pipe(useref.assets())
+    .pipe(jsFilter)
+    .pipe(uglify())
+    .pipe(jsFilter.restore())
+    .pipe(cssFilter)
+    .pipe(minifyCss())
+    .pipe(cssFilter.restore())
+    .pipe(useref.restore())
+    .pipe(useref())
+    .pipe(gulp.dest(config.build));
 });
 
-gulp.task('fonts', function () {
-    return gulp.src(config.dev+'/assets/fonts/**')
-                .pipe(gulp.dest(config.build+'/fonts'));
+gulp.task('imagemin', function() {
+  return gulp.src(config.dev + '/assets/images/**')
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      use: [pngcrush()]
+    }))
+    .pipe(gulp.dest(config.build + '/assets/images'));
 });
 
-gulp.task('sass-dev', function () {
-    return gulp.src(config.dev+'/assets/styles/**/*.scss')
-        .pipe(sass({
-            sourcemap: false,
-            trace : true,
-            style: 'expanded',
-            precision: 5,
-            debugInfo : false,
-            lineNumbers : true
-        }))
-        .pipe(prefix('last 3 version', '> 1%', 
-            { 
-                cascade: true 
-            }
-        ))
-        .pipe(gulp.dest(config.dev+'/assets/styles/'));
+gulp.task('fonts', function() {
+  return gulp.src(config.dev + '/assets/fonts/**')
+    .pipe(gulp.dest(config.build + '/assets/fonts'));
 });
 
-gulp.task('sass-prod', function () {
-    return gulp.src(config.dev+'/assets/styles/**/*.scss')
-        .pipe(sass({
-            sourcemap: false,
-            trace : false,
-            style: 'expanded',
-            precision: 5,
-            debugInfo : false,
-            lineNumbers : false
-        }))
-        .pipe(prefix('last 3 version', '> 1%', 
-            { 
-                cascade: false 
-            }
-        ))
-        .pipe(gulp.dest(config.dev+'/assets/styles/'));
+gulp.task('sass-dev', function() {
+  return gulp.src(config.dev + '/assets/styles/**/*.scss')
+    .pipe(sass({
+      sourcemap: false,
+      trace: true,
+      style: 'expanded',
+      precision: 5,
+      debugInfo: false,
+      lineNumbers: true
+    }))
+    .pipe(prefix('last 3 version', '> 1%', {
+      cascade: true
+    }))
+    .pipe(gulp.dest(config.dev + '/assets/styles/'));
+});
+
+gulp.task('sass-prod', function() {
+  return gulp.src(config.dev + '/assets/styles/**/*.scss')
+    .pipe(sass({
+      sourcemap: false,
+      trace: false,
+      style: 'expanded',
+      precision: 5,
+      debugInfo: false,
+      lineNumbers: false
+    }))
+    .pipe(prefix('last 3 version', '> 1%', {
+      cascade: false
+    }))
+    .pipe(gulp.dest(config.dev + '/assets/styles/'));
 });
 
 gulp.task('default', ['sass-dev', 'connect-dev', 'watch']);
-gulp.task('build-templates', ['sass-prod','imagemin','fonts','template-parser']);
-gulp.task('build', ['sass-prod', 'imagemin','fonts','html-parser']);
+gulp.task('build-templates', ['sass-prod', 'imagemin', 'fonts', 'template-parser']);
+gulp.task('build', ['sass-prod', 'imagemin', 'fonts', 'html-parser', 'assets-parser']);
 gulp.task('prod', ['connect-prod']);

@@ -1,19 +1,20 @@
-$icon-font-path: "../fonts/";
+$icon-font-path:"../fonts/";
 
 /*** Overridden values ***/
-$navbar-inverse-color : #ffffff;
-$navbar-inverse-bg : #008cba;
-$navbar-inverse-link-color : #fff;
-$navbar-inverse-link-hover-color : #eee;
-$navbar-inverse-brand-hover-color : #eee;
-$navbar-inverse-toggle-hover-bg  : #333;
-$navbar-inverse-toggle-icon-bar-bg  : #fff;
-$navbar-inverse-toggle-border-color  : #333;
+
+$navbar-inverse-color:#ffffff;
+ $navbar-inverse-bg:#008cba;
+ $navbar-inverse-link-color:#fff;
+ $navbar-inverse-link-hover-color:#eee;
+ $navbar-inverse-brand-hover-color:#eee;
+ $navbar-inverse-toggle-hover-bg:#333;
+ $navbar-inverse-toggle-icon-bar-bg:#fff;
+ $navbar-inverse-toggle-border-color:#333;
+
 /*** Overridden values ***/
 
-@import "../lib/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
-
-.starter {
+@import "../lib/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+ .starter {
   padding-top: 50px;
 }
 .starter .starter-template {
