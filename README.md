@@ -53,18 +53,12 @@ To run the app, execute
 ```bash
 $ gulp 
 ```
-and navigate to ```http://localhost:1881``` to see the starter template. You can checkout ```dev/templates``` folder for integrated Bootstrap templates.
+and navigate to ```http://localhost:3000``` to see the starter template. You can checkout ```dev/templates``` folder for integrated Bootstrap templates.
 
 To build the project (except templates folder) to `/build` folder, run
 
 ```bash
 $ gulp build
-```
-
-To build the complete project (including templates folder) to `/build` folder, run
-
-```bash
-$ gulp build-templates
 ```
 
 To run the built app, execute
